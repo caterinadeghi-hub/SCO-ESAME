@@ -1,42 +1,812 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="it">
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=utf-8">
-<meta name=Generator content="Microsoft Word 15 (filtered)">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dispensa – SCO Manager | Laurea Magistrale Supply Chain</title>
 <style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Aptos;
-	panose-1:2 11 0 4 2 2 2 2 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin:0cm;
-	font-size:12.0pt;
-	font-family:"Aptos",sans-serif;}
-.MsoChpDefault
-	{font-family:"Aptos",sans-serif;}
-@page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:70.85pt 2.0cm 2.0cm 2.0cm;}
-div.WordSection1
-	{page:WordSection1;}
--->
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: #f5f5f0; color: #1a1a2e; font-size: 14px; line-height: 1.7; }
+
+  /* COPERTINA */
+  .cover {
+    background: linear-gradient(135deg, #1a1a6e 0%, #2d2d8f 60%, #c8a000 100%);
+    color: white; padding: 60px 40px; text-align: center; page-break-after: always;
+  }
+  .cover .badge { background: #c8a000; color: #1a1a2e; font-weight: bold; font-size: 11px;
+    padding: 4px 14px; border-radius: 20px; display: inline-block; margin-bottom: 24px; letter-spacing: 1px; }
+  .cover h1 { font-size: 32px; font-weight: bold; margin-bottom: 10px; }
+  .cover h2 { font-size: 18px; font-weight: normal; opacity: 0.85; margin-bottom: 30px; }
+  .cover .subtitle { font-size: 13px; opacity: 0.7; margin-top: 20px; }
+  .cover .divider { width: 60px; height: 3px; background: #c8a000; margin: 20px auto; border-radius: 2px; }
+
+  /* LAYOUT */
+  .container { max-width: 860px; margin: 0 auto; padding: 30px 20px; }
+
+  /* TOC */
+  .toc { background: white; border-left: 5px solid #1a1a6e; padding: 24px 28px;
+    border-radius: 4px; margin-bottom: 36px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .toc h3 { color: #1a1a6e; font-size: 15px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin: 6px 0; color: #2d2d8f; font-size: 13px; }
+  .toc li a { color: #2d2d8f; text-decoration: none; }
+  .toc li a:hover { text-decoration: underline; }
+
+  /* SEZIONI */
+  .section { background: white; border-radius: 6px; margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; }
+  .section-header { background: #1a1a6e; color: white; padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+  .section-number { background: #c8a000; color: #1a1a2e; font-weight: bold; font-size: 12px;
+    width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 16px; font-weight: bold; }
+  .section-body { padding: 22px 24px; }
+
+  /* SUBSECTIONS */
+  h3.sub { color: #1a1a6e; font-size: 14px; margin: 18px 0 8px; border-bottom: 2px solid #e8e8f0; padding-bottom: 4px; }
+  p { margin-bottom: 10px; }
+
+  /* TABELLA */
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 14px 0; }
+  th { background: #1a1a6e; color: white; padding: 9px 12px; text-align: left; font-size: 12px; }
+  td { padding: 8px 12px; border-bottom: 1px solid #e8e8f0; vertical-align: top; }
+  tr:nth-child(even) td { background: #f8f8ff; }
+  tr:hover td { background: #f0f0fc; }
+
+  /* DEFINITION BOX */
+  .def { background: #f0f0fc; border-left: 4px solid #2d2d8f; padding: 12px 16px;
+    border-radius: 0 4px 4px 0; margin: 12px 0; font-size: 13px; }
+  .def strong { color: #1a1a6e; }
+
+  /* ALERT / KEY CONCEPT */
+  .key { background: #fffbea; border: 1px solid #c8a000; border-left: 4px solid #c8a000;
+    padding: 12px 16px; border-radius: 0 4px 4px 0; margin: 12px 0; font-size: 13px; }
+  .key strong { color: #8a6c00; }
+
+  /* CRITICAL BOX */
+  .critical { background: #fff0f0; border-left: 4px solid #cc3333; padding: 12px 16px;
+    border-radius: 0 4px 4px 0; margin: 12px 0; font-size: 13px; }
+
+  /* LISTE */
+  ul.list, ol.list { padding-left: 20px; margin: 8px 0 12px; }
+  ul.list li, ol.list li { margin: 5px 0; font-size: 13px; }
+
+  /* QUIZ SECTION */
+  .quiz-section { background: white; border-radius: 6px; margin-bottom: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; }
+  .quiz-header { background: #c8a000; color: #1a1a2e; padding: 14px 24px; }
+  .quiz-header h2 { font-size: 16px; font-weight: bold; }
+  .quiz-body { padding: 22px 24px; }
+
+  .question { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #e8e8f0; }
+  .question:last-child { border-bottom: none; margin-bottom: 0; }
+  .q-text { font-weight: bold; color: #1a1a2e; margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+  .q-num { background: #1a1a6e; color: white; font-size: 10px; font-weight: bold;
+    padding: 2px 7px; border-radius: 10px; margin-right: 6px; }
+  .options { list-style: none; padding: 0; margin: 6px 0 10px; }
+  .options li { padding: 5px 10px; margin: 3px 0; border-radius: 4px;
+    font-size: 12.5px; border: 1px solid #e8e8f0; cursor: default; }
+  .options li.correct { background: #e8f5e9; border-color: #4caf50; color: #1b5e20; font-weight: bold; }
+  .options li.wrong { background: #ffeaea; border-color: #ef9a9a; color: #7f0000; }
+  .explanation { font-size: 12px; color: #555; background: #f9f9f9;
+    border-left: 3px solid #c8a000; padding: 8px 12px; border-radius: 0 4px 4px 0; margin-top: 6px; }
+  .explanation strong { color: #8a6c00; }
+
+  /* SCHEMA VISIVO */
+  .schema { background: #f8f8ff; border: 1px solid #ddd; border-radius: 6px;
+    padding: 16px; margin: 14px 0; text-align: center; font-size: 12px; }
+  .schema .box { display: inline-block; background: #1a1a6e; color: white;
+    padding: 6px 14px; border-radius: 4px; margin: 4px; font-size: 11px; font-weight: bold; }
+  .schema .box.gold { background: #c8a000; color: #1a1a2e; }
+  .schema .arrow { color: #1a1a6e; font-size: 18px; vertical-align: middle; margin: 0 4px; }
+  .schema .label { display: block; font-size: 10px; color: #666; margin-top: 6px; }
+
+  /* FOOTER */
+  .footer { text-align: center; padding: 20px; color: #999; font-size: 11px; }
+
+  /* STAMPA */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .section, .quiz-section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+    .cover { page-break-after: always; }
+  }
 </style>
-
 </head>
+<body>
 
-<body lang=IT style='word-wrap:break-word'>
-
-<div class=WordSection1>
-
-<p class=MsoNormal>file:///Users/caterina/Downloads/dispensa_SCO_Manager.html</p>
-
+<!-- COPERTINA -->
+<div class="cover">
+  <div class="badge">LAUREA MAGISTRALE · SUPPLY CHAIN MANAGEMENT</div>
+  <h1>Lo SCO Manager</h1>
+  <h2>Ruolo, Presidio Organizzativo e Contesto Strategico</h2>
+  <div class="divider"></div>
+  <p style="opacity:0.8; font-size:13px;">Dispensa per esame a crocette · LIUC – The Business University</p>
+  <p class="subtitle">Basata sulle slide ufficiali del corso GOSC · A.A. 2024/2025</p>
 </div>
 
-</body>
+<div class="container">
 
+<!-- INDICE -->
+<div class="toc">
+  <h3>📋 Indice</h3>
+  <ol>
+    <li><a href="#s1">Operations Management (OPS) – Il framework di base</a></li>
+    <li><a href="#s2">Supply Chain Management (SCM) – Definizione e perimetro</a></li>
+    <li><a href="#s3">OPS vs SCM – Confronto sistematico</a></li>
+    <li><a href="#s4">Generare valore per il cliente: le 4 dimensioni</a></li>
+    <li><a href="#s5">La rilevanza strategica dello SCO Manager</a></li>
+    <li><a href="#s6">Assetti organizzativi: verticalizzazione vs orizontalizzazione</a></li>
+    <li><a href="#s7">I "limes" organizzativi – I conflitti interfunzionali</a></li>
+    <li><a href="#s8">Lo SCO Manager come protagonista del cambiamento</a></li>
+    <li><a href="#s9">Megatrend: demografia e geopolitica</a></li>
+    <li><a href="#quiz">🎯 Esercizi a Crocette (con soluzioni commentate)</a></li>
+  </ol>
+</div>
+
+
+<!-- SEZIONE 1 -->
+<div class="section" id="s1">
+  <div class="section-header">
+    <div class="section-number">1</div>
+    <h2>Operations Management (OPS) – Il Framework di Base</h2>
+  </div>
+  <div class="section-body">
+    <div class="def">
+      <strong>Definizione:</strong> L'Operations Management consiste nel <em>progettare, pianificare, eseguire e monitorare</em> i processi che trasformano input in output capaci di generare valore per il cliente finale.
+    </div>
+
+    <h3 class="sub">Il modello Input → Trasformazione → Output</h3>
+    <div class="schema">
+      <span class="box">INPUT<br><small>Materiali / Info / Clienti</small></span>
+      <span class="arrow">→</span>
+      <span class="box gold">TRASFORMAZIONE (OPS)<br><small>Macchinari / Personale / Metodi</small></span>
+      <span class="arrow">→</span>
+      <span class="box">OUTPUT<br><small>Prodotti / Servizi</small></span>
+      <span class="label">I feedback scorrono in entrambe le direzioni per il controllo dei processi</span>
+    </div>
+
+    <h3 class="sub">Tipologie di Input</h3>
+    <ul class="list">
+      <li><strong>Materiali:</strong> materie prime, semilavorati, componenti</li>
+      <li><strong>Informazioni:</strong> ordini, previsioni, specifiche tecniche</li>
+      <li><strong>Clienti-utenti-pazienti:</strong> nelle operations di servizio (sanità, ristorazione, trasporti)</li>
+    </ul>
+
+    <h3 class="sub">Le Risorse della Trasformazione</h3>
+    <ul class="list">
+      <li><strong>Macchinari:</strong> impianti, attrezzature, tecnologie</li>
+      <li><strong>Personale:</strong> operatori, tecnici, manager</li>
+      <li><strong>Metodi di lavoro:</strong> procedure, standard, processi codificati</li>
+    </ul>
+
+    <div class="key">
+      <strong>⚠ Punto critico per l'esame:</strong> Operations NON è sinonimo di manifattura. Il perimetro OPS include sanità, trasporti, servizi digitali, ristorazione, ecc. Qualsiasi sistema che trasforma input in output è un sistema operations.
+    </div>
+
+    <h3 class="sub">I 4 verbi chiave dell'OPS Manager</h3>
+    <table>
+      <tr><th>Verbo</th><th>Significato operativo</th></tr>
+      <tr><td><strong>Progettare</strong></td><td>Definire la struttura dei processi e delle risorse (scelte strutturali di lungo periodo)</td></tr>
+      <tr><td><strong>Pianificare</strong></td><td>Allocare risorse e capacità nel tempo per rispondere alla domanda (S&OP, MPS, MRP)</td></tr>
+      <tr><td><strong>Eseguire</strong></td><td>Gestire operativamente i flussi produttivi e di servizio (scheduling, dispatching)</td></tr>
+      <tr><td><strong>Monitorare</strong></td><td>Misurare le performance e attivare azioni correttive (KPI, feedback loop)</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- SEZIONE 2 -->
+<div class="section" id="s2">
+  <div class="section-header">
+    <div class="section-number">2</div>
+    <h2>Supply Chain Management (SCM) – Definizione e Perimetro</h2>
+  </div>
+  <div class="section-body">
+    <div class="def">
+      <strong>Definizione:</strong> Il Supply Chain Management consiste nel <em>progettare, pianificare, eseguire e monitorare</em> i processi che sincronizzano i flussi fisici e informativi <strong>end-to-end</strong>, dall'approvvigionamento alla consegna dei prodotti/servizi, al fine di generare valore per il cliente finale.
+    </div>
+
+    <h3 class="sub">Upstream vs Downstream</h3>
+    <div class="schema">
+      <span class="box">F1 / F2 / F3<br><small>Fornitori</small></span>
+      <span class="arrow">→</span>
+      <span class="box gold">SC UPSTREAM<br><small>Fornitura degli input</small></span>
+      <span class="arrow">→</span>
+      <span class="box">OPS<br><small>Trasformazione</small></span>
+      <span class="arrow">→</span>
+      <span class="box gold">SC DOWNSTREAM<br><small>Consegna output</small></span>
+      <span class="arrow">→</span>
+      <span class="box">C1 / C2 / C3<br><small>Clienti</small></span>
+    </div>
+
+    <h3 class="sub">Flussi gestiti dalla Supply Chain</h3>
+    <table>
+      <tr><th>Tipo di flusso</th><th>Direzione prevalente</th><th>Esempi</th></tr>
+      <tr><td><strong>Fisico</strong></td><td>Upstream → Downstream</td><td>Materie prime, semilavorati, prodotti finiti, resi</td></tr>
+      <tr><td><strong>Informativo</strong></td><td>Bidirezionale</td><td>Ordini, forecast, conferme, fatture, tracking</td></tr>
+      <tr><td><strong>Finanziario</strong></td><td>Downstream → Upstream</td><td>Pagamenti, crediti, anticipi, condizioni contrattuali</td></tr>
+    </table>
+
+    <div class="key">
+      <strong>Concetto chiave – "end-to-end":</strong> La SC non si ferma ai confini dell'azienda. Abbraccia tutta la rete: fornitori dei fornitori (second/third tier) → azienda → clienti dei clienti. Questa visione sistemica è il tratto distintivo del SCM rispetto all'OPS.
+    </div>
+  </div>
+</div>
+
+
+<!-- SEZIONE 3 -->
+<div class="section" id="s3">
+  <div class="section-header">
+    <div class="section-number">3</div>
+    <h2>OPS vs SCM – Confronto Sistematico</h2>
+  </div>
+  <div class="section-body">
+    <p>Questa tabella è <strong>frequentemente oggetto di domande a crocette</strong>. Studiarla bene.</p>
+    <table>
+      <tr><th>Dimensione</th><th>Operations Management</th><th>Supply Chain Management</th></tr>
+      <tr><td><strong>Ambito</strong></td><td>Interno all'organizzazione</td><td>Esteso alla rete inter-organizzativa</td></tr>
+      <tr><td><strong>Focus</strong></td><td>Trasformazione delle risorse</td><td>Integrazione dei flussi fisici e informativi</td></tr>
+      <tr><td><strong>Oggetto principale</strong></td><td>Processi produttivi e di servizio</td><td>Rete fornitori–produzione–distributori–clienti</td></tr>
+      <tr><td><strong>Obiettivi chiave</strong></td><td>Efficienza, qualità, affidabilità</td><td>Servizio, sincronizzazione, resilienza</td></tr>
+      <tr><td><strong>Relazioni</strong></td><td>Coordinamento intra-funzionale (e inter-funzionale)</td><td>Coordinamento inter-funzionale e inter-aziendale</td></tr>
+      <tr><td><strong>Orizzonte</strong></td><td>Prevalentemente operativo/tattico</td><td>Tattico e strategico (rete)</td></tr>
+    </table>
+
+    <div class="critical">
+      <strong>Errore comune all'esame:</strong> Confondere OPS e SCM come sinonimi. OPS è un sottoinsieme della catena del valore. La SC ingloba l'OPS e lo estende verso fornitori e clienti. L'OPS Manager presidia la trasformazione interna; lo SCO Manager presidia l'integrazione end-to-end.
+    </div>
+  </div>
+</div>
+
+
+<!-- SEZIONE 4 -->
+<div class="section" id="s4">
+  <div class="section-header">
+    <div class="section-number">4</div>
+    <h2>Generare Valore per il Cliente: Le 4 Dimensioni</h2>
+  </div>
+  <div class="section-body">
+    <p>Lo SCO Manager deve bilanciare quattro dimensioni di valore, spesso in tensione tra loro:</p>
+
+    <table>
+      <tr><th>Dimensione</th><th>Obiettivi operativi per lo SCO Manager</th></tr>
+      <tr>
+        <td><strong>💰 COSTO</strong></td>
+        <td>
+          Riduzione costi unitari di produzione · Ottimizzazione costi logistici (trasporto, magazzino) ·
+          Riduzione scorte e capitale circolante · Miglioramento produttività (efficienza manodopera e impianti) ·
+          Riduzione sprechi (eliminazione attività non a valore – logica Lean)
+        </td>
+      </tr>
+      <tr>
+        <td><strong>🎯 SERVIZIO</strong></td>
+        <td>
+          Aumentare la puntualità (On-Time Delivery – OTD) · Ridurre i lead time ·
+          Migliorare la flessibilità produttiva · Garantire disponibilità a magazzino (no stock-out) ·
+          Personalizzare il prodotto/servizio
+        </td>
+      </tr>
+      <tr>
+        <td><strong>✅ QUALITÀ</strong></td>
+        <td>
+          Ridurre difettosità e resi · Ridurre reclami cliente · Compliance normativa e contrattuale ·
+          Standardizzare processi
+        </td>
+      </tr>
+      <tr>
+        <td><strong>🌿 SOSTENIBILITÀ</strong></td>
+        <td>
+          Riduzione emissioni · Ottimizzazione trasporti · Riduzione imballaggi ·
+          Uso fornitori sostenibili · Economia circolare / riciclo
+        </td>
+      </tr>
+    </table>
+
+    <div class="key">
+      <strong>Trade-off chiave:</strong> Le 4 dimensioni sono in tensione reciproca. Ad esempio, massimizzare il servizio (scorte elevate, trasporti rapidi) aumenta i costi. Il ruolo dello SCO Manager è trovare il punto di equilibrio ottimale dato il posizionamento strategico dell'azienda.
+    </div>
+  </div>
+</div>
+
+
+<!-- SEZIONE 5 -->
+<div class="section" id="s5">
+  <div class="section-header">
+    <div class="section-number">5</div>
+    <h2>La Rilevanza Strategica dello SCO Manager</h2>
+  </div>
+  <div class="section-body">
+
+    <h3 class="sub">Il problema del "ruolo ancillare"</h3>
+    <p>In molti contesti, la funzione SCOM viene percepita come subordinata rispetto a Finance o Marketing & Sales. Queste ultime sono considerate – a torto o a ragione – maggiormente capaci di influenzare gli orientamenti strategici dell'azienda. Questa è una distorsione da superare.</p>
+
+    <div class="def">
+      <strong>La tesi centrale:</strong> Lo SCO Manager non è solo un gestore di fabbriche, fornitori e flussi operativi. È un <em>attore strategico</em> capace di influenzare il successo competitivo della propria azienda.
+    </div>
+
+    <h3 class="sub">Il modello di Hines et al. (2008): quattro quadranti</h3>
+    <table>
+      <tr><th>Efficacia commerciale ↕ / Efficienza operativa →</th><th>Inefficiente</th><th>Efficiente</th></tr>
+      <tr>
+        <td><strong>Effective</strong> (fa le cose giuste)</td>
+        <td><strong>SURVIVE</strong><br><small>Buona strategia ma ops inefficienti: sopravvive, non cresce</small></td>
+        <td><strong>THRIVE</strong> ⭐<br><small>Con strategia chiara, gli SCO Manager abilitano il successo competitivo</small></td>
+      </tr>
+      <tr>
+        <td><strong>Ineffective</strong> (fa le cose sbagliate)</td>
+        <td><strong>DIE QUICKLY</strong><br><small>Nessuna strategia + ops inefficienti: collasso rapido</small></td>
+        <td><strong>DIE SLOWLY</strong><br><small>Ops efficienti ma senza strategia: declino lento. Gli SCO Manager NON evitano il declino</small></td>
+      </tr>
+    </table>
+
+    <div class="key">
+      <strong>Implicazione chiave:</strong> La qualità delle operations fa la differenza <em>solo in presenza di una strategia commerciale valida</em>. Senza strategia, anche il miglior SCO Manager non può invertire il declino aziendale.
+    </div>
+
+    <h3 class="sub">Come lo SCO Manager guadagna legittimazione</h3>
+    <ol class="list">
+      <li><strong>Tradurre in linguaggio economico</strong> i problemi tecnico-operativi. I vertici ragionano in termini di CAPEX e OPEX: lo SCO Manager deve parlare questa lingua.</li>
+      <li><strong>Attivare tavoli interfunzionali</strong> (es. Sales & Operations Planning – S&OP) per allineare il mondo Sales con il mondo SCOM.</li>
+      <li><strong>Costruire "business partnership"</strong> con HR (fabbisogni di risorse), IT (trasformazione digitale) e Finance (KPI economico-finanziari).</li>
+    </ol>
+  </div>
+</div>
+
+
+<!-- SEZIONE 6 -->
+<div class="section" id="s6">
+  <div class="section-header">
+    <div class="section-number">6</div>
+    <h2>Assetti Organizzativi: Verticalizzazione vs Orizontalizzazione</h2>
+  </div>
+  <div class="section-body">
+
+    <h3 class="sub">L'organizzazione funzionale (silos) – I limiti</h3>
+    <p>L'organizzazione funzionale classica (Procurement, Quality, Manufacturing, Logistics, Sales, Finance…) è strutturata su <strong>confini verticali ben definiti</strong>. Questo produce:</p>
+    <ul class="list">
+      <li>Ottimizzazione locale di ogni funzione a scapito delle performance complessive</li>
+      <li>Impedimento all'integrazione end-to-end dei processi</li>
+      <li>Confinamento delle funzioni SCOM a un ruolo meramente operativo</li>
+    </ul>
+
+    <h3 class="sub">L'organizzazione process-driven ("orizontalizzazione")</h3>
+    <div class="def">
+      <strong>Principio:</strong> Le attività sono collegate secondo una relazione input/output o cliente/fornitore e <em>tagliano trasversalmente</em> i silos del tradizionale organigramma funzionale. Il cliente è il punto di riferimento, non la funzione.
+    </div>
+
+    <table>
+      <tr><th>Dimensione</th><th>Verticalizzazione (Funzionale)</th><th>Orizontalizzazione (Process-driven)</th></tr>
+      <tr><td><strong>Centro di gravità</strong></td><td>Il responsabile funzionale</td><td>Il cliente / il processo</td></tr>
+      <tr><td><strong>Coordinamento</strong></td><td>Gerarchico verticale</td><td>Interfunzionale e inter-aziendale</td></tr>
+      <tr><td><strong>Flessibilità</strong></td><td>Bassa</td><td>Alta</td></tr>
+      <tr><td><strong>Lead time</strong></td><td>Tendenzialmente elevati (passaggi di consegne)</td><td>Ridotti (flusso continuo)</td></tr>
+      <tr><td><strong>Innovazione</strong></td><td>Limitata ai silos</td><td>Favorita dai team interfunzionali</td></tr>
+      <tr><td><strong>Resistenza al cambiamento</strong></td><td>Bassa (status quo)</td><td>Alta (ridistribuzione del potere)</td></tr>
+      <tr><td><strong>Ruolo SCO Manager</strong></td><td>Marginale / operativo</td><td>Centrale / strategico</td></tr>
+    </table>
+
+    <div class="key">
+      <strong>Punto chiave:</strong> Gli assetti <em>process-driven</em> sono il terreno più favorevole per l'inserimento degli SCO Manager, il cui ruolo è presidiare e facilitare l'integrazione dei flussi interfunzionali lungo l'intera catena del valore.
+    </div>
+
+    <h3 class="sub">Criticità dell'orizontalizzazione</h3>
+    <p>La principale resistenza viene dai responsabili funzionali, che vedono ridotto il proprio perimetro di autonomia e potere. Al responsabile funzionale, in un'organizzazione matura, dovrebbero restare responsabilità più strategiche: scelte di investimento, assunzioni, sviluppo professionale delle risorse della propria famiglia professionale.</p>
+
+    <h3 class="sub">Evoluzione degli assetti organizzativi: le tappe</h3>
+    <table>
+      <tr><th>Tappa</th><th>Struttura</th><th>"Limes" superato</th></tr>
+      <tr><td>1</td><td>Organizzazione funzionale pura</td><td>–</td></tr>
+      <tr><td>2</td><td>Proto-funzione SCM (Pianificazione + Logistica)</td><td>Integrazione Pianificazione-Logistica</td></tr>
+      <tr><td>3</td><td>SCM + Material Planning (interfaccia con Acquisti)</td><td>Pianificazione vs Acquisti</td></tr>
+      <tr><td>4</td><td>SCM con Order Management (ex Vendite)</td><td>SCM vs Vendite</td></tr>
+      <tr><td>5</td><td>SCM con Manufacturing integrato</td><td>SCM vs Produzione</td></tr>
+    </table>
+  </div>
+</div>
+
+
+<!-- SEZIONE 7 -->
+<div class="section" id="s7">
+  <div class="section-header">
+    <div class="section-number">7</div>
+    <h2>I "Limes" Organizzativi – I Conflitti Interfunzionali</h2>
+  </div>
+  <div class="section-body">
+    <div class="def">
+      <strong>Definizione di "limes":</strong> Confini organizzativi che da fisiologiche suddivisioni di competenza diventano "vere e proprie fortificazioni" tra unità aziendali, impedendo ai processi di procedere in modo fluido e integrato.
+    </div>
+
+    <h3 class="sub">Limes 1: Pianificazione vs Logistica</h3>
+    <ul class="list">
+      <li><strong>Problema:</strong> Disallineamento tra piani di produzione e capacità logistiche; assenza di visibilità integrata sul ciclo ordine-consegna.</li>
+      <li><strong>Soluzione:</strong> Creazione di una <em>proto-funzione SCM</em> che integra Pianificazione e Logistica.</li>
+      <li><strong>Effetti:</strong> Riduzione scorte e lead time, maggiore coerenza decisionale, responsabilità integrata sul livello di servizio.</li>
+    </ul>
+
+    <h3 class="sub">Limes 2: Pianificazione vs Acquisti</h3>
+    <ul class="list">
+      <li><strong>Problema:</strong> I buyer sono misurati su obiettivi di economicità (prezzo d'acquisto), non di disponibilità temporale. Tendono ad accorpare ordini per ottenere sconti di quantità, erodendo i lead time pianificati.</li>
+      <li><strong>Soluzione:</strong> Inserimento di <em>Material Manager / Material Planner</em> in Pianificazione con responsabilità diretta sui flussi fisici e informativi verso i fornitori.</li>
+      <li><strong>Tensione organizzativa:</strong> Gli Acquisti percepiscono questo come un'indebita ingerenza nel proprio perimetro di responsabilità.</li>
+    </ul>
+
+    <h3 class="sub">Limes 3: SCM vs Vendite (Order Management)</h3>
+    <ul class="list">
+      <li><strong>Distinzione chiave:</strong> Le Vendite mantengono il <em>CRM</em> (generazione e sviluppo delle relazioni con i clienti). La <em>gestione operativa degli ordini</em> (verifica formale, fido, listini, inserimento nel gestionale) migra verso la funzione SCOM.</li>
+      <li><strong>Razionale:</strong> L'order management è un'attività transazionale, ad alto volume e ripetitività, più affine alla logica operativa delle SC che a quella commerciale. Permette feedback più rapidi ai clienti.</li>
+    </ul>
+
+    <h3 class="sub">Limes 4: SCM vs Produzione (Manufacturing)</h3>
+    <ul class="list">
+      <li><strong>Problema:</strong> La Produzione è spesso il nucleo del vantaggio competitivo storico: ha cultura di prodotto radicata, manager anziani con molto peso organizzativo, stabilimenti lontani dall'HQ che rivendicano autonomia decisionale.</li>
+      <li><strong>Soluzione:</strong> Creazione di una funzione integrata <em>Manufacturing & SCM</em> (o SCM/COO) con responsabilità su pianificazione, produzione e flussi logistici.</li>
+      <li><strong>Obiettivo:</strong> Evitare ottimizzazioni locali di stabilimento a scapito delle performance complessive di servizio e costo.</li>
+    </ul>
+
+    <div class="key">
+      <strong>Nota sulla progettazione organizzativa:</strong> Non esiste un modello universalmente ottimale. La scelta dipende da storia e cultura aziendale, maturità del percorso di integrazione già compiuto, tipo di business e complessità dei processi. La roadmap deve essere graduale.
+    </div>
+  </div>
+</div>
+
+
+<!-- SEZIONE 8 -->
+<div class="section" id="s8">
+  <div class="section-header">
+    <div class="section-number">8</div>
+    <h2>Lo SCO Manager come Protagonista del Cambiamento</h2>
+  </div>
+  <div class="section-body">
+
+    <h3 class="sub">Dai processi operativi alla leadership strategica</h3>
+    <p>Lo SCO Manager non può limitarsi al <em>firefighting</em> operativo (risolvere problemi urgenti di giorno in giorno). Deve saper leggere i segnali di cambiamento nei modelli di business, nelle relazioni con il mercato e nelle tecnologie, trasformandoli in azioni concrete.</p>
+
+    <h3 class="sub">Digital & AI Leadership</h3>
+    <table>
+      <tr><th>Livello</th><th>Descrizione</th></tr>
+      <tr><td><strong>Digitalizzazione</strong></td><td>Conversione digitale di attività esistenti (necessario ma non sufficiente)</td></tr>
+      <tr><td><strong>Trasformazione digitale</strong></td><td>Riprogettazione dei processi sfruttando le potenzialità del digitale, fino alla possibile evoluzione del business model</td></tr>
+      <tr><td><strong>AI & Generative AI</strong></td><td>Valutare potenzialità non solo per ottimizzare ma per <em>ripensare radicalmente</em> i processi SCOM</td></tr>
+    </table>
+
+    <h3 class="sub">Orchestrare la SC End-to-End</h3>
+    <ul class="list">
+      <li>Sviluppare visibilità upstream e downstream anticipando rischi di interruzione</li>
+      <li>Governare reti multilivello di fornitori (second e third tier supplier)</li>
+      <li>Integrare Digital Twin e IoT per monitoraggio in tempo reale e simulazione di scenari</li>
+    </ul>
+
+    <h3 class="sub">Resilienza e Antifragilità</h3>
+    <div class="def">
+      <strong>Resilienza:</strong> Capacità di resistere agli shock e ripristinare le condizioni operative.<br>
+      <strong>Antifragilità (Taleb):</strong> Capacità di migliorare e rafforzarsi <em>grazie</em> agli shock. Le disruption diventano opportunità di apprendimento e riprogettazione.
+    </div>
+    <ul class="list">
+      <li>Supply Chain Risk Management strutturato e continuo (non episodico)</li>
+      <li>Modelli di partnership con i fornitori basati su trasparenza e corresponsabilità nelle crisi</li>
+      <li>Utilizzo degli eventi avversi per rafforzare strategie e processi</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- SEZIONE 9 -->
+<div class="section" id="s9">
+  <div class="section-header">
+    <div class="section-number">9</div>
+    <h2>Megatrend: Demografia e Geopolitica</h2>
+  </div>
+  <div class="section-body">
+
+    <h3 class="sub">Cambiamenti demografici e sociali</h3>
+    <table>
+      <tr><th>Dato</th><th>Implicazione per la SC</th></tr>
+      <tr><td>Popolazione mondiale a ~9,7 mld entro il 2050 (+1,5 mld)</td><td>Aumento della domanda complessiva di beni e servizi</td></tr>
+      <tr><td>2/3 della crescita concentrata in Africa</td><td>Nuovi mercati di sbocco; nuova disponibilità di manodopera a basso costo</td></tr>
+      <tr><td>Invecchiamento strutturale nei Paesi avanzati</td><td>Scarsità di manodopera operativa → spinta verso l'automazione</td></tr>
+      <tr><td>Nel 2050 una persona su sei avrà più di 65 anni</td><td>Domanda crescente di prodotti/servizi per anziani; workforce management multigenerazionale</td></tr>
+    </table>
+
+    <h3 class="sub">Italia – Dati critici</h3>
+    <ul class="list">
+      <li>Popolazione 2025: ~59 mln → 2050: ~52 mln → 2100: ~35 mln</li>
+      <li>Quota over-65 nel 2050: 36,8% (oggi 25,1%); nel 2100: 37,5%</li>
+      <li>Quota under-15 nel 2050: solo 14,7% → mercato interno in forte contrazione</li>
+    </ul>
+
+    <h3 class="sub">Spostamento del baricentro economico globale</h3>
+    <table>
+      <tr><th>Tendenza</th><th>Implicazione per lo SCO Manager</th></tr>
+      <tr><td>Entro 2050: Cina, India e Malesia tra i principali attori economici</td><td>Ripensare le strategie di network globale (offshoring, nearshoring, reshoring)</td></tr>
+      <tr><td>65% della classe media globale in Asia entro 2030 (60% dei consumi)</td><td>Riconfigurare mercati di sbocco e reti distributive</td></tr>
+      <tr><td>68% della pop. mondiale in aree urbane entro 2050</td><td>Ripensare la logistica urbana e l'ultimo miglio</td></tr>
+      <tr><td>43 megalopoli entro 2030 (9% pop., 15% PIL)</td><td>Localizzare hub, micro-fulfillment center, nodi di prossimità</td></tr>
+    </table>
+
+    <div class="key">
+      <strong>Parole chiave da ricordare:</strong> nearshoring (avvicinare la produzione al mercato), reshoring (riportare la produzione in patria), offshoring (delocalizzare in paesi a basso costo), second/third tier supplier, logistica dell'ultimo miglio, micro-fulfillment center.
+    </div>
+  </div>
+</div>
+
+
+<!-- SEZIONE QUIZ -->
+<div class="quiz-section" id="quiz">
+  <div class="quiz-header">
+    <h2>🎯 Esercizi a Crocette – Con Soluzioni Commentate</h2>
+  </div>
+  <div class="quiz-body">
+    <p style="margin-bottom:20px; font-size:13px; color:#555;">
+      Per ogni domanda è indicata la risposta corretta (✅) e le distrazioni sbagliate (❌). Leggi sempre la spiegazione: nelle domande a crocette magistrali, spesso la risposta "quasi giusta" è la trappola.
+    </p>
+
+    <!-- BLOCCO 1: OPS e SCM -->
+    <p style="font-weight:bold; color:#1a1a6e; font-size:13px; margin-bottom:12px; border-bottom:2px solid #1a1a6e; padding-bottom:4px;">BLOCCO 1 – Concetti di base: OPS e SCM</p>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">1</span> Quale delle seguenti affermazioni definisce correttamente l'Operations Management?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Il processo di acquisto e gestione dei fornitori per minimizzare i costi di approvvigionamento</li>
+        <li class="correct">✅ B) Il processo di progettare, pianificare, eseguire e monitorare i processi che trasformano input in output capaci di generare valore per il cliente finale</li>
+        <li class="wrong">❌ C) La gestione integrata dei flussi fisici e informativi dall'approvvigionamento alla consegna dei prodotti/servizi</li>
+        <li class="wrong">❌ D) La funzione aziendale responsabile della pianificazione finanziaria e del controllo dei costi operativi</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> La risposta C descrive il SCM, non l'OPS. La A descrive il Procurement. La D descrive il Controllo di Gestione. L'OPS si concentra sulla trasformazione interna degli input in output.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">2</span> In quale contesto si applica l'Operations Management?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Esclusivamente nel settore manifatturiero</li>
+        <li class="wrong">❌ B) Nel settore manifatturiero e nel commercio al dettaglio</li>
+        <li class="correct">✅ C) In qualsiasi organizzazione che trasforma input in output, inclusi sanità, trasporti, servizi digitali e ristorazione</li>
+        <li class="wrong">❌ D) Solo nelle aziende con più di 500 dipendenti e processi produttivi standardizzati</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Le slide esplicitano che "Operations ≠ solo manifattura". Il perimetro dell'OPS è universale: qualsiasi sistema che trasforma input (materiali, informazioni, clienti) in output è soggetto alle logiche dell'Operations Management.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">3</span> Quale delle seguenti differenze tra OPS e SCM è corretta?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) L'OPS si occupa della gestione dei fornitori; il SCM si occupa della gestione della produzione</li>
+        <li class="wrong">❌ B) L'OPS ha un ambito inter-organizzativo; il SCM ha un ambito intra-organizzativo</li>
+        <li class="correct">✅ C) L'OPS ha ambito interno all'organizzazione e focus sulla trasformazione; il SCM si estende alla rete inter-organizzativa e integra i flussi end-to-end</li>
+        <li class="wrong">❌ D) L'OPS è rilevante solo a livello tattico; il SCM è rilevante solo a livello strategico</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> La risposta B inverte correttamente i due concetti (trappola classica). La D è errata perché entrambe le discipline hanno implicazioni su più livelli decisionali. La C rispecchia esattamente la tabella comparativa delle slide.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">4</span> La SC "upstream" comprende:</div>
+      <ul class="options">
+        <li class="correct">✅ A) I processi finalizzati alla fornitura di input per alimentare i processi di trasformazione</li>
+        <li class="wrong">❌ B) I processi di distribuzione e consegna dei prodotti finiti ai clienti finali</li>
+        <li class="wrong">❌ C) I processi interni di produzione e assemblaggio dei semilavorati</li>
+        <li class="wrong">❌ D) La gestione dei resi e dei flussi di ritorno (reverse logistics)</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Upstream = verso i fornitori (approvvigionamento). Downstream = verso i clienti (distribuzione/consegna). La D descrive la logistica inversa, un sottoinsieme della downstream.</div>
+    </div>
+
+    <!-- BLOCCO 2: Valore e strategia -->
+    <p style="font-weight:bold; color:#1a1a6e; font-size:13px; margin: 20px 0 12px; border-bottom:2px solid #1a1a6e; padding-bottom:4px;">BLOCCO 2 – Valore, Strategia e Rilevanza dello SCO Manager</p>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">5</span> Secondo il modello di Hines et al. (2008), in quale scenario lo SCO Manager contribuisce maggiormente al successo competitivo?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) In assenza di una strategia commerciale chiara, perché le operations possono compensare</li>
+        <li class="wrong">❌ B) Quando l'azienda opera in un mercato commoditizzato dove il prezzo è l'unica leva</li>
+        <li class="correct">✅ C) In presenza di una strategia commerciale efficace e di un'offerta apprezzata dal mercato, dove le operations possono fare la differenza tra sopravvivere e prosperare</li>
+        <li class="wrong">❌ D) Quando l'azienda è in fase di declino, per rallentare il processo di deterioramento</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Il modello dimostra che senza strategia, anche l'efficienza operativa più elevata porta solo a un "die slowly". Gli SCO Manager abilitano il successo (quadrante "Thrive") solo quando c'è un orientamento strategico valido.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">6</span> Quale delle seguenti azioni NON rientra tra le strategie con cui lo SCO Manager può guadagnare legittimazione all'interno dell'organizzazione?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Tradurre i problemi tecnico-operativi in termini di impatto economico-finanziario (CAPEX/OPEX)</li>
+        <li class="wrong">❌ B) Attivare tavoli di lavoro interfunzionali come il processo S&OP</li>
+        <li class="wrong">❌ C) Costruire relazioni di business partnership con HR, IT e Finance</li>
+        <li class="correct">✅ D) Concentrare l'attenzione sui processi interni alla propria funzione, massimizzando l'efficienza operativa del proprio silo</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Focalizzarsi sul proprio silo è esattamente il comportamento opposto a quello richiesto. La legittimazione si conquista superando i confini funzionali, non rafforzandoli.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">7</span> Quale coppia di obiettivi è correttamente associata alla dimensione "Servizio" nella creazione di valore per il cliente?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Riduzione emissioni e uso di fornitori sostenibili</li>
+        <li class="wrong">❌ B) Riduzione difettosità e compliance normativa</li>
+        <li class="correct">✅ C) On-Time Delivery e riduzione dei lead time</li>
+        <li class="wrong">❌ D) Riduzione costi unitari di produzione e ottimizzazione costi logistici</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> A = Sostenibilità. B = Qualità. D = Costo. La dimensione Servizio riguarda puntualità, reattività, flessibilità, disponibilità a magazzino e personalizzazione.</div>
+    </div>
+
+    <!-- BLOCCO 3: Organizzazione -->
+    <p style="font-weight:bold; color:#1a1a6e; font-size:13px; margin: 20px 0 12px; border-bottom:2px solid #1a1a6e; padding-bottom:4px;">BLOCCO 3 – Assetti Organizzativi e "Limes"</p>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">8</span> Perché i modelli organizzativi funzionali basati su silos ostacolano il ruolo dello SCO Manager?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Perché riducono i costi di coordinamento e rendono superflua la funzione SCM</li>
+        <li class="correct">✅ B) Perché le responsabilità frammentate per funzione limitano l'integrazione end-to-end dei processi, confinando le funzioni SCOM a un ruolo meramente operativo</li>
+        <li class="wrong">❌ C) Perché aumentano la trasparenza informativa tra funzioni, rendendo il ruolo SCM ridondante</li>
+        <li class="wrong">❌ D) Perché favoriscono l'ottimizzazione globale della catena del valore a discapito delle singole funzioni</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> I silos producono ottimizzazioni locali (ogni funzione massimizza il proprio KPI) a scapito delle performance globali. La mancanza di integrazione end-to-end è il principale fallimento organizzativo che lo SCO Manager deve superare.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">9</span> Quale delle seguenti descrizioni identifica correttamente il primo "limes" organizzativo che le aziende tendono a superare nell'evoluzione verso un modello SCM integrato?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) La separazione tra SCM e Manufacturing, che impedisce il coordinamento della capacità produttiva</li>
+        <li class="correct">✅ B) La separazione tra Pianificazione e Logistica, che crea disallineamento tra piani produttivi e capacità distributive</li>
+        <li class="wrong">❌ C) La separazione tra Vendite e SCM, che genera conflitti nella gestione degli ordini cliente</li>
+        <li class="wrong">❌ D) La separazione tra Acquisti e Finance, che determina inefficienze nella gestione del capitale circolante</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Il percorso evolutivo descritto nelle slide parte dall'integrazione Pianificazione-Logistica (proto-funzione SCM), poi si estende verso Acquisti, poi Order Management (ex Vendite), poi Manufacturing. L'ordine di superamento dei "limes" è una domanda frequente.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">10</span> Perché il conflitto tra Pianificazione e Acquisti è considerato un "limes" critico?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Perché gli Acquisti tendono a sovrastimare i lead time per avere margini di sicurezza eccessivi</li>
+        <li class="correct">✅ B) Perché i buyer, misurati sull'economicità degli acquisti, tendono ad accorpare ordini per ottenere sconti di quantità, erodendo i lead time pianificati dalla Pianificazione</li>
+        <li class="wrong">❌ C) Perché la Pianificazione non condivide le previsioni di domanda con gli Acquisti, generando stockout ricorrenti</li>
+        <li class="wrong">❌ D) Perché gli Acquisti gestiscono autonomamente le relazioni con i clienti, bypassando la funzione commerciale</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Il problema è il disallineamento tra sistemi di incentivazione: i buyer vengono valutati sul costo d'acquisto (prezzo per unità), non sulla disponibilità temporale dei materiali. Questo genera comportamenti sub-ottimali dal punto di vista della SC.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">11</span> Nell'evoluzione organizzativa verso una SCM estesa, quale attività viene tipicamente trasferita dalla funzione Vendite alla funzione SCM?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) La generazione di nuovi lead commerciali e la gestione delle trattative contrattuali</li>
+        <li class="wrong">❌ B) La pianificazione delle campagne marketing e la gestione del brand</li>
+        <li class="correct">✅ C) La gestione operativa degli ordini (verifica formale, fido, listini, inserimento nel gestionale) e le comunicazioni transazionali con i clienti</li>
+        <li class="wrong">❌ D) La definizione della politica di pricing e delle condizioni commerciali standard</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Il CRM (relazione con il cliente) rimane in Vendite. L'Order Management (processazione degli ordini) è un'attività transazionale e ripetitiva, più affine alle logiche operatve della SC. Questo accelera i feedback ai clienti e migliora il livello di servizio.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">12</span> Qual è la principale criticità che frena l'adozione di organizzazioni process-driven (orizontalizzazione)?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) L'incompatibilità tecnologica con i sistemi ERP tradizionali, che sono progettati per strutture funzionali</li>
+        <li class="correct">✅ B) Il rilassamento delle relazioni gerarchiche che riduce il perimetro di autorità dei responsabili funzionali, generando resistenze politiche interne</li>
+        <li class="wrong">❌ C) L'aumento dei costi di coordinamento dovuto alla moltiplicazione dei team interfunzionali</li>
+        <li class="wrong">❌ D) La difficoltà di misurare le performance individuali in assenza di chiari silos di responsabilità</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> La resistenza è prima di tutto politica: i responsabili funzionali perdono parte delle attività di coordinamento che legittimavano la loro autorità. La A e la C sono problemi reali ma secondari rispetto alla resistenza al cambiamento del management.</div>
+    </div>
+
+    <!-- BLOCCO 4: Cambiamento e megatrend -->
+    <p style="font-weight:bold; color:#1a1a6e; font-size:13px; margin: 20px 0 12px; border-bottom:2px solid #1a1a6e; padding-bottom:4px;">BLOCCO 4 – Cambiamento, Megatrend e Antifragilità</p>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">13</span> Cosa distingue la "trasformazione digitale" dalla semplice "digitalizzazione" dei processi SCOM?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) La trasformazione digitale riguarda solo l'adozione di software ERP; la digitalizzazione riguarda l'automazione dei macchinari</li>
+        <li class="wrong">❌ B) La digitalizzazione è più costosa e rischiosa; la trasformazione digitale è incrementale e reversibile</li>
+        <li class="correct">✅ C) La trasformazione digitale punta alla riprogettazione dei processi e alla possibile evoluzione del business model, andando oltre la mera conversione digitale di attività esistenti</li>
+        <li class="wrong">❌ D) Non vi è differenza sostanziale: i due termini sono sinonimi nel contesto della SC</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> La digitalizzazione è necessaria ma non sufficiente. La vera trasformazione digitale implica un ripensamento radicale di come si crea e distribuisce valore, non solo l'automazione dei processi esistenti.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">14</span> Il concetto di "antifragilità" applicato alla supply chain (Taleb) implica:</div>
+      <ul class="options">
+        <li class="wrong">❌ A) La capacità di mantenere le operations invariate di fronte a qualsiasi tipo di disruption esterna</li>
+        <li class="wrong">❌ B) La costruzione di scorte di sicurezza elevate per tamponare qualsiasi interruzione della fornitura</li>
+        <li class="correct">✅ C) La capacità di migliorare e rafforzarsi grazie agli shock, trasformando le disruption in opportunità di apprendimento e riprogettazione dei processi</li>
+        <li class="wrong">❌ D) La ridondanza sistemica attraverso doppio sourcing su tutti i fornitori critici</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> La resilienza (A e D) è la capacità di resistere e tornare allo stato precedente. L'antifragilità va oltre: l'organizzazione emerge dalla crisi più forte e più intelligente di prima. Il doppio sourcing è uno strumento di resilienza, non di antifragilità.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">15</span> Quale delle seguenti rappresenta un'implicazione diretta dell'invecchiamento demografico nei Paesi avanzati per lo SCO Manager?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Riduzione della domanda di automazione industriale, poiché la manodopera anziana è più esperta</li>
+        <li class="correct">✅ B) Progressiva riduzione della forza lavoro disponibile, con conseguente necessità di maggiore automazione e soluzioni organizzative che compensino la scarsità di competenze operative</li>
+        <li class="wrong">❌ C) Aumento della complessità logistica a causa della crescita demografica nei mercati maturi</li>
+        <li class="wrong">❌ D) Riduzione dei costi di produzione grazie alla maggiore esperienza accumulata dai lavoratori anziani</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> L'invecchiamento implica riduzione della forza lavoro attiva e aumento dei costi del lavoro per la scarsità. La risposta logica è l'investimento in automazione (robotica, cobottica, AI) per mantenere la produttività. La C confonde crescita demografica (Africa) con invecchiamento (Paesi avanzati).</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">16</span> Entro il 2030, quale quota della classe media globale risiederà in Asia?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Circa il 35%</li>
+        <li class="wrong">❌ B) Circa il 45%</li>
+        <li class="correct">✅ C) Circa il 65%</li>
+        <li class="wrong">❌ D) Circa l'80%</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Dato citato nelle slide: entro il 2030 il 65% della classe media globale risiederà in Asia, rappresentando quasi il 60% dei consumi della classe media mondiale. Questo è un dato preciso che può essere richiesto all'esame.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">17</span> Cosa si intende con "nearshoring" nell'ambito delle strategie di network globale?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Riportare la produzione nel Paese d'origine dell'azienda</li>
+        <li class="correct">✅ B) Avvicinare la produzione al mercato di destinazione, scegliendo paesi geograficamente prossimi rispetto alla destinazione finale</li>
+        <li class="wrong">❌ C) Delocalizzare la produzione in paesi a basso costo del lavoro, anche se geograficamente distanti</li>
+        <li class="wrong">❌ D) Esternalizzare la logistica dell'ultimo miglio a operatori locali specializzati</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Reshoring = ritorno in patria. Nearshoring = avvicinamento geografico al mercato. Offshoring = delocalizzazione lontana (tipicamente in Asia). Le tre strategie rispondono a diversi trade-off tra costo, rischio geopolitico e reattività al mercato.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">18</span> Per quale ragione la progettazione dell'assetto organizzativo della funzione SCM non deve essere delegata esclusivamente all'HR?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Perché l'HR non ha le competenze tecniche per comprendere i processi di supply chain</li>
+        <li class="wrong">❌ B) Perché le decisioni organizzative SCM richiedono un budget dedicato che solo il CFO può approvare</li>
+        <li class="correct">✅ C) Perché le scelte organizzative in ambito SCOM non riguardano solo aspetti amministrativi del personale, ma hanno implicazioni fortemente strategiche che richiedono il coinvolgimento dello SCO Manager</li>
+        <li class="wrong">❌ D) Perché nelle PMI l'HR è spesso assente, rendendo necessario che la SCM si organizzi autonomamente</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> La slide chiarisce esplicitamente questo punto: la complessità organizzativa non deve diventare un pretesto per delegare all'HR decisioni che hanno implicazioni strategiche. Gli SCO Manager devono essere protagonisti attivi del disegno organizzativo.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">19</span> Quale tecnologia viene citata nelle slide come strumento per ottenere visibilità end-to-end sui flussi, simulare scenari alternativi e supportare decisioni in tempo reale nella SC?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Blockchain e smart contract per la tracciabilità delle transazioni tra fornitori</li>
+        <li class="correct">✅ B) Digital Twin e IoT per monitoraggio in tempo reale e simulazione di scenari</li>
+        <li class="wrong">❌ C) ERP di nuova generazione per l'integrazione dei flussi informativi intra-aziendali</li>
+        <li class="wrong">❌ D) Robotic Process Automation (RPA) per l'automazione dei processi amministrativi nella SC</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> Le slide citano esplicitamente Digital Twin e IoT come tecnologie per la supply chain visibility. Blockchain e RPA non sono menzionate. ERP è uno strumento di base, non di visibilità avanzata.</div>
+    </div>
+
+    <div class="question">
+      <div class="q-text"><span class="q-num">20</span> Quale delle seguenti affermazioni descrive correttamente il ruolo dei "second e third tier supplier" nella gestione della supply chain?</div>
+      <ul class="options">
+        <li class="wrong">❌ A) Sono fornitori di backup attivati solo in caso di fallimento del fornitore principale (first tier)</li>
+        <li class="wrong">❌ B) Sono distributori e rivenditori nella catena downstream verso il cliente finale</li>
+        <li class="correct">✅ C) Sono fornitori dei fornitori diretti dell'azienda (secondo e terzo livello upstream), la cui gestione è necessaria per identificare vulnerabilità e rischi nascosti nella catena del valore</li>
+        <li class="wrong">❌ D) Sono fornitori di servizi logistici (3PL e 4PL) che gestiscono i flussi fisici per conto dell'azienda</li>
+      </ul>
+      <div class="explanation"><strong>Spiegazione:</strong> La mappatura multilivello dei fornitori è un obiettivo chiave dello SCO Manager. Il rischio spesso si nasconde nei livelli più profondi della supply network: un problema a un third tier supplier può interrompere tutta la catena produttiva (come dimostrato dalla crisi dei semiconduttori 2021-2022).</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RIEPILOGO CONCETTI CHIAVE -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-number">📌</div>
+    <h2>Riepilogo: Concetti Chiave da Memorizzare</h2>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>Termine</th><th>Definizione sintetica</th></tr>
+      <tr><td><strong>OPS Management</strong></td><td>Progettare/pianificare/eseguire/monitorare la trasformazione di input in output (ambito intra-organizzativo)</td></tr>
+      <tr><td><strong>SCM</strong></td><td>Sincronizzare flussi fisici e informativi end-to-end dall'approvvigionamento alla consegna (ambito inter-organizzativo)</td></tr>
+      <tr><td><strong>SCO Manager</strong></td><td>Attore strategico che presidia l'integrazione end-to-end e contribuisce al successo competitivo dell'azienda</td></tr>
+      <tr><td><strong>SCOM</strong></td><td>Supply Chain e Operations Management (acronimo usato nelle slide)</td></tr>
+      <tr><td><strong>Silos funzionali</strong></td><td>Organizzazioni verticali che frammentano le responsabilità e impediscono l'integrazione dei processi</td></tr>
+      <tr><td><strong>Process-driven</strong></td><td>Organizzazione orientata ai processi, con corsie orizzontali che attraversano i silos funzionali</td></tr>
+      <tr><td><strong>"Limes"</strong></td><td>Confini organizzativi che diventano barriere all'integrazione end-to-end</td></tr>
+      <tr><td><strong>S&OP</strong></td><td>Sales & Operations Planning: processo interfunzionale che allinea domanda e offerta</td></tr>
+      <tr><td><strong>OTD</strong></td><td>On-Time Delivery: puntualità nelle consegne (KPI chiave del Servizio)</td></tr>
+      <tr><td><strong>Resilienza</strong></td><td>Capacità di resistere alle disruption e ripristinare le condizioni operative</td></tr>
+      <tr><td><strong>Antifragilità</strong></td><td>Capacità di migliorarsi e rafforzarsi grazie agli shock (Taleb)</td></tr>
+      <tr><td><strong>Reshoring</strong></td><td>Riportare la produzione nel Paese d'origine</td></tr>
+      <tr><td><strong>Nearshoring</strong></td><td>Avvicinare geograficamente la produzione al mercato di destinazione</td></tr>
+      <tr><td><strong>Offshoring</strong></td><td>Delocalizzare in Paesi a basso costo del lavoro</td></tr>
+      <tr><td><strong>Digital Twin</strong></td><td>Replica digitale dei processi fisici per simulazione e monitoraggio in tempo reale</td></tr>
+      <tr><td><strong>CAPEX / OPEX</strong></td><td>Capital Expenditure (investimenti) / Operating Expenditure (spese correnti): linguaggio del board aziendale</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  Dispensa basata sulle slide GOSC – Ruolo SCO Manager · LIUC The Business University · Uso personale per studio · A.A. 2024/2025
+</div>
+
+</div><!-- end container -->
+</body>
 </html>
